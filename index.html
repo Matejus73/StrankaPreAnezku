@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="indexStyle.css">
+
+<script>
+    const step = Number(localStorage.getItem("step") ?? 0);
+
+    // Not verified yet → start verification
+    if (step < 3) {
+        window.location.replace("verify1.html");
+    }
+</script>
+
+
 <head>
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
