@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+    if (Number(localStorage.getItem("step")) !== 1) {
+        window.location.href = "verify1.html";
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Step 2</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+    <<div class="container">
+        <div class="Nadpis2">
+            <h1>Hmmm...</h1>
+            <h1>Tak možno si anežka.</h1>
+        </div>
+
+        <div class="Text2">
+            <h2>Ale neviem, neviem.</h2>
+            <h2>Niesom si istý.</h2>
+        </div>
+
+        <div class="Overenie2">
+            <h3> Vyber obrázky z motýľmi:</h3>
+
+            <div class="Captcha">
+
+                <div>
+                    <img src="Images/leaf1.jpg" alt="">
+                    <img src="Images/motyl1.jpg" alt="">
+                    <img src="Images/motyl2.jpg" alt="">
+                </div>
+                <div>
+                    <img src="Images/motyl3.jpg" alt="">
+                    <img src="Images/motyl4.jpg" alt="">
+                    <img src="Images/leaf2.jpg" alt="">
+                </div>
+                <div>
+                    <img src="Images/motyl5.jpg" alt="">
+                    <img src="Images/leaf3.jpg" alt="">
+                    <img src="Images/leaf4.jpg" alt="">
+                </div>
+
+            </div>
+
+            <div class="Checkboxes">
+
+                <div>
+                    <input type="checkbox" id="checkbox1" />
+                    <input type="checkbox" id="checkbox2" />
+                    <input type="checkbox" id="checkbox3" />
+                </div>
+                <div>
+                    <input type="checkbox" id="checkbox4" />
+                    <input type="checkbox" id="checkbox5" />
+                    <input type="checkbox" id="checkbox6" />
+                </div>
+                <div>
+                    <input type="checkbox" id="checkbox7" />
+                    <input type="checkbox" id="checkbox8" />
+                    <input type="checkbox" id="checkbox9" />
+                </div>
+
+            </div>
+        </div>
+        <div class="Overit">
+            <button id="verifyCaptcha">Overiť</button>
+            <p id="captchaError" style="color:red;"></p>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        const correct = [1, 6, 8, 9];
+
+        document.getElementById("verifyCaptcha").addEventListener("click", () => {
+            let selected = [];
+
+            for (let i = 1; i <= 9; i++) {
+                if (document.getElementById("checkbox" + i).checked) {
+                    selected.push(i);
+                }
+            }
+
+            const ok =
+                selected.length === correct.length &&
+                correct.every(i => selected.includes(i));
+
+            if (ok) {
+                localStorage.setItem("step", "2");
+                window.location.href = "verify3.html";
+            } else {
+                document.getElementById("captchaError").textContent =
+                    "Nope, zle ty podvodník 🦋";
+            }
+        });
+    </script>
+</body>
+</html>

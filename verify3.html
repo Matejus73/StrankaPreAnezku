@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Step 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--    <script>-->
+<!--        if (Number(localStorage.getItem("step") ?? 0) !== 2) {-->
+<!--            window.location.href = "verify1.html";-->
+<!--        }-->
+<!--    </script>-->
+
+    <div class="container">
+
+        <div class="Nadpis2">
+            <h1>Ňo dobre¿ Ešte jeden test:</h1>
+
+        </div>
+
+        <div class="Text2">
+            <p>🥺?</p>
+        </div>
+
+
+        <div class="Overenie3">
+            <button id="optB" data-correct="true">Áno</button>
+            <button id="optA" data-correct="false">Nie</button>
+        </div>
+
+        <div class="hint" id="hint"></div>
+    </div>
+
+<script>
+    const NEXT_PAGE = "index.html";       // your gift page
+    const COMPLETED_STEP = 3;             // step value that means "done"
+
+    const hint = document.getElementById("hint");
+    const optA = document.getElementById("optA");
+    const optB = document.getElementById("optB");
+
+    function goNext() {
+        localStorage.setItem("step", String(COMPLETED_STEP));
+        window.location.href = NEXT_PAGE;
+    }
+
+    function makeBothCorrect() {
+        // Change both buttons to the correct choice
+        optA.textContent = "Určite Áno";
+        optB.textContent = "Áno";
+
+        optA.dataset.correct = "true";
+        optB.dataset.correct = "true";
+    }
+
+    function handleClick(e) {
+        const isCorrect = e.currentTarget.dataset.correct === "true";
+
+        if (isCorrect) {
+            goNext();
+        } else {
+            // They chose wrong: remove the choice illusion
+            makeBothCorrect();
+        }
+    }
+
+    optA.addEventListener("click", handleClick);
+    optB.addEventListener("click", handleClick);
+</script>
+</body>
+</html>

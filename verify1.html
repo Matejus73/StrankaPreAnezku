@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Step 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="Nadpis">
+            <h1>Ahoj Anežka... </h1>
+        </div>
+
+        <div class="Text">
+            <h2>Počkaj, ty možno niesi anežka.</h2>
+        </div>
+
+        <div class="Overenie">
+            <h3> Doplň slovo pre overenie: </h3>
+
+            <p>Lililili _ _ _ _ _</p>
+
+            <div>
+                <input id="code" type="text" placeholder="slovo pre overenie" />
+                <button id="btn">Overiť</button>
+                <p id="err" style="color:red;"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        const REQUIRED_STEP = 0;          // must be at step 0 to do step 1
+        const NEXT_STEP = 1;              // after success, set step to 1
+        const NEXT_PAGE = "verify2.html";
+        const SECRET = "líška";           // change this
+
+        // Force correct order
+        const current = Number(localStorage.getItem("step") ?? 0);
+        if (current !== REQUIRED_STEP) window.location.href = "verify1.html";
+
+        document.getElementById("btn").addEventListener("click", () => {
+            const v = document.getElementById("code").value.trim();
+            if (v === SECRET) {
+                localStorage.setItem("step", String(NEXT_STEP));
+                window.location.href = NEXT_PAGE;
+            } else {
+                document.getElementById("err").textContent = "Zle, niesi hoden pokračovať!";
+            }
+        });
+    </script>
+</body>
+</html>
