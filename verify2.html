@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<script>
-    if (Number(localStorage.getItem("step")) !== 1) {
-        window.location.href = "verify1.html";
-    }
-</script>
-
 <head>
     <meta charset="UTF-8" />
     <title>Step 2</title>
     <link rel="stylesheet" href="style.css" />
+    <script>
+        window.VERIFY_REQUIRED_STEP = 1;
+    </script>
+    <script src="verify-guard.js"></script>
 
 </head>
 <body>
@@ -68,11 +66,13 @@
                 </div>
 
             </div>
+
+            <div class="Overit">
+                <button id="verifyCaptcha">Overiť</button>
+                <p id="captchaError" style="color:red;"></p>
+            </div>
         </div>
-        <div class="Overit">
-            <button id="verifyCaptcha">Overiť</button>
-            <p id="captchaError" style="color:red;"></p>
-        </div>
+
 
 
     </div>

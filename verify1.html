@@ -7,6 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <script>
+        window.VERIFY_REQUIRED_STEP = 0;
+    </script>
+    <script src="verify-guard.js"></script>
+
 </head>
 <body>
 
@@ -39,14 +44,9 @@
 
 
     <script>
-        const REQUIRED_STEP = 0;          // must be at step 0 to do step 1
         const NEXT_STEP = 1;              // after success, set step to 1
         const NEXT_PAGE = "verify2.html";
         const SECRET = "líška";           // change this
-
-        // Force correct order
-        const current = Number(localStorage.getItem("step") ?? 0);
-        if (current !== REQUIRED_STEP) window.location.href = "verify1.html";
 
         document.getElementById("btn").addEventListener("click", () => {
             const v = document.getElementById("code").value.trim();
